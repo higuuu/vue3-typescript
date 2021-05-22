@@ -11,8 +11,8 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   name:'TalkBoard',
   setup() {
-    const name = 'Aさん'
-    const message = 'メッセージ'
+    const name = 'Betterさん'
+    const message = 'hogehoge'
     return { name,message }
   }
 })
