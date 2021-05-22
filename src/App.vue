@@ -7,16 +7,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent,ref,provide } from 'vue'
+import { defineComponent, ref, provide } from "vue";
 
 export default defineComponent({
   setup() {
     const setting = ref("black");
     provide("storeSetting", setting);
   },
-})
+});
 </script>
-
 
 <style lang="scss">
 #app {

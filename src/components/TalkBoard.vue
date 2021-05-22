@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2 :style="{color:color}">{{ userName }}</h2>
+    <h2 :style="{ color: color }">{{ userName }}</h2>
     <p>{{ userMessage }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, onMounted, inject} from "vue";
+import { computed, defineComponent, ref, onMounted, inject } from "vue";
 
 interface MessageProps {
   name: string;

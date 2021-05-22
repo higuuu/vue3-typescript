@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { inject, defineComponent, ref } from "vue";
+import { inject, defineComponent } from "vue";
 import DisplaySetting from "@/components/DisplaySetting.vue";
 
 export default defineComponent({
