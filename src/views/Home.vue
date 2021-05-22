@@ -1,8 +1,6 @@
 <template>
-  <div class="home">
-    <TalkBoard name="bob" message="hello!" />
-    <TalkBoard name="jon" message="hey!" />
-    <TalkBoard name="brian" message="fuck!" />
+  <div class="home" v-for="data in talkData" :key="data">
+    <TalkBoard :name="data.name" :message="data.message" />
   </div>
 </template>
 
@@ -10,9 +8,26 @@
 import { defineComponent } from "vue";
 import TalkBoard from "@/components/TalkBoard.vue"; // @ is an alias to /src
 
-export default defineComponent ({
+export default defineComponent({
   components: {
-    TalkBoard
-  }
-})
+    TalkBoard,
+  },
+  setup() {
+    const talkData = [
+      {
+        name: "bob",
+        message: "hello!",
+      },
+      {
+        name: "jon",
+        message: "hey!",
+      },
+      {
+        name: "brian",
+        message: "fuck!",
+      },
+    ];
+    return { talkData };
+  },
+});
 </script>
