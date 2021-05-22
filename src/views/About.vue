@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { provide, defineComponent, ref } from "vue";
+import { inject, defineComponent, ref } from "vue";
 import DisplaySetting from "@/components/DisplaySetting.vue";
 
 export default defineComponent({
@@ -15,7 +15,7 @@ export default defineComponent({
     DisplaySetting,
   },
   setup() {
-    const setting = ref("black");
+    const setting = inject("storeSetting");
     function changeSetting() {
       if (setting.value == "black") {
         setting.value = "red";
@@ -23,7 +23,7 @@ export default defineComponent({
         setting.value = "black";
       }
     }
-    provide("storeSetting", setting);
+    inject("storeSetting", setting);
     return { changeSetting, setting };
   },
 });
