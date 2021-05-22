@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>{{ name }}</h2>
-    <p>{{ message }}</p>
+    <h2>{{ userName }}</h2>
+    <p>{{ userMessage }}</p>
   </div>
 </template>
 
@@ -14,5 +14,10 @@ export default defineComponent({
     name: String,
     message: String
   },
+  setup(props){
+    const userName = props.name
+    const userMessage = props.message
+    return { userName,userMessage }
+  }
 })
 </script>
