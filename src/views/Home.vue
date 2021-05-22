@@ -7,13 +7,12 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import TalkBoard from "@/components/TalkBoard.vue"; // @ is an alias to /src
 
-@Options({
+export default defineComponent ({
   components: {
-    TalkBoard,
-  },
+    TalkBoard
+  }
 })
-export default class Home extends Vue {}
 </script>
