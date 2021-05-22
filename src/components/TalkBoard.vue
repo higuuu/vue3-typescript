@@ -6,7 +6,7 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent } from '@vue/composition-api'
+import { computed,defineComponent } from 'vue'
 
 interface MessageProps {
   name: string;
@@ -27,7 +27,16 @@ export default defineComponent({
   },
   setup(props:MessageProps){
     const userName = props.name
-    const userMessage = props.message
+    const userMessage = computed(
+      () => {
+        const messageText = props.message
+        if (messageText.includes('fuck')){
+          return '放送禁止用語です'
+        } else {
+          return messageText
+        }
+      }
+    )
     return { userName,userMessage }
   }
 })
