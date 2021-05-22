@@ -2,13 +2,18 @@
   <div class="home" v-for="data in talkData" :key="data">
     <TalkBoard :name="data.name" :message="data.message" />
   </div>
-  <PostBoard />
+  <PostBoard @post-board="postBoard" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import TalkBoard from "@/components/TalkBoard.vue"; // @ is an alias to /src
 import PostBoard from "@/components/PostBoard.vue";
+
+interface MessageProps {
+  name: string;
+  message: string;
+}
 
 export default defineComponent({
   components: {
@@ -16,7 +21,7 @@ export default defineComponent({
     PostBoard,
   },
   setup() {
-    const talkData = [
+    const talkData = reactive([
       {
         name: "bob",
         message: "hello!",
@@ -29,8 +34,14 @@ export default defineComponent({
         name: "brian",
         message: "fuck!",
       },
-    ];
-    return { talkData };
+    ]);
+    function postBoard(post: MessageProps) {
+      talkData.push({
+        name: post.name,
+        message: post.message,
+      });
+    }
+    return { talkData, postBoard };
   },
 });
 </script>

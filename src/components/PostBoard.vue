@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, SetupContext } from "vue";
 
 interface MessageProps {
   name: string;
@@ -24,13 +24,13 @@ interface MessageProps {
 
 export default defineComponent({
   name: "PostBoard",
-  setup() {
+  setup(props, context: SetupContext) {
     const post = reactive<MessageProps>({
       name: "",
       message: "",
     });
     function postAction() {
-      console.log(post);
+      context.emit("post-board", post);
     }
     return { post, postAction };
   },
