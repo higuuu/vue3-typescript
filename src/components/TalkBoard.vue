@@ -10,10 +10,9 @@ import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
   name:'TalkBoard',
-  setup() {
-    const name = 'Betterさん'
-    const message = 'hogehoge'
-    return { name,message }
-  }
+  props: {
+    name: String,
+    message: String
+  },
 })
 </script>

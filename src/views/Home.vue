@@ -1,9 +1,8 @@
 <template>
   <div class="home">
-    <TalkBoard />
-    <TalkBoard />
-    <TalkBoard />
-    <TalkBoard />
+    <TalkBoard name='bob' message='hello!'/>
+    <TalkBoard name='jon' message='hey!' />
+    <TalkBoard name='brian' message='fuck!' />
   </div>
 </template>
 
