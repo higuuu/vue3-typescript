@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2>{{ userName }}</h2>
+    <h2 :style="{color:color}">{{ userName }}</h2>
     <p>{{ userMessage }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, onMounted } from "vue";
+import { computed, defineComponent, ref, onMounted, inject} from "vue";
 
 interface MessageProps {
   name: string;
@@ -27,6 +27,7 @@ export default defineComponent({
   },
   setup(props: MessageProps) {
     const userName = ref(props.name);
+    const color = inject("storeSetting");
     const userMessage = computed(() => {
       const messageText = props.message;
       if (messageText.includes("fuck")) {
@@ -41,7 +42,7 @@ export default defineComponent({
         userName.value = "ダメな人";
       }
     });
-    return { userName, userMessage };
+    return { userName, userMessage, color };
   },
 });
 </script>
