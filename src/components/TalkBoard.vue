@@ -26,10 +26,11 @@ export default defineComponent({
     },
   },
   setup(props: MessageProps) {
-    const userName = props.name;
+    let userName = props.name;
     const userMessage = computed(() => {
       const messageText = props.message;
       if (messageText.includes("fuck")) {
+        userName = 'ダメな人'
         return "放送禁止用語です";
       } else {
         return messageText;
