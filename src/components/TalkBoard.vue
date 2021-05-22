@@ -8,6 +8,11 @@
 <script lang='ts'>
 import { defineComponent } from '@vue/composition-api'
 
+interface MessageProps {
+  name: string;
+  message: string;
+}
+
 export default defineComponent({
   name:'TalkBoard',
   props: {
@@ -20,7 +25,7 @@ export default defineComponent({
       default: ''
     }
   },
-  setup(props){
+  setup(props:MessageProps){
     const userName = props.name
     const userMessage = props.message
     return { userName,userMessage }
