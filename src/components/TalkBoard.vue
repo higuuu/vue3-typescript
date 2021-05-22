@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Aさん</h2>
-    <p>メッセージ</p>
+    <h2>{{ name }}</h2>
+    <p>{{ message }}</p>
   </div>
 </template>
 
@@ -9,6 +9,11 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  name:'TalkBoard'
+  name:'TalkBoard',
+  setup() {
+    const name = 'Aさん'
+    const message = 'メッセージ'
+    return { name,message }
+  }
 })
 </script>
