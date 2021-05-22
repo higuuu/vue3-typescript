@@ -1,6 +1,9 @@
 <template>
   <div class="home">
     <TalkBoard />
+    <TalkBoard />
+    <TalkBoard />
+    <TalkBoard />
   </div>
 </template>
 
