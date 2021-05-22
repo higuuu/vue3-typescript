@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, ref, onMounted } from "vue";
 
 interface MessageProps {
   name: string;
@@ -30,10 +30,15 @@ export default defineComponent({
     const userMessage = computed(() => {
       const messageText = props.message;
       if (messageText.includes("fuck")) {
-        userName.value = 'ダメな人'
         return "放送禁止用語です";
       } else {
         return messageText;
+      }
+    });
+    onMounted(() => {
+      const messageText = props.message;
+      if (messageText.includes("fuck")) {
+        userName.value = "ダメな人";
       }
     });
     return { userName, userMessage };
