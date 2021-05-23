@@ -9,6 +9,7 @@
 import { defineComponent, reactive } from "vue";
 import TalkBoard from "@/components/TalkBoard.vue"; // @ is an alias to /src
 import PostBoard from "@/components/PostBoard.vue";
+import firebase from "@/plugins/firebase";
 
 interface MessageProps {
   name: string;
@@ -36,7 +37,7 @@ export default defineComponent({
       },
     ]);
     function postBoard(post: MessageProps) {
-      talkData.push({
+      database.ref(key).push({
         name: post.name,
         message: post.message,
       });
