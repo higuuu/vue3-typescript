@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, onMounted, reactive } from "vue";
 import TalkBoard from "@/components/TalkBoard.vue"; // @ is an alias to /src
 import PostBoard from "@/components/PostBoard.vue";
 import firebase from "@/plugins/firebase";
@@ -22,20 +22,24 @@ export default defineComponent({
     PostBoard,
   },
   setup() {
-    const talkData = reactive([
-      {
-        name: "bob",
-        message: "hello!",
-      },
-      {
-        name: "jon",
-        message: "hey!",
-      },
-      {
-        name: "brian",
-        message: "fuck!",
-      },
-    ]);
+    const database = firebase.database();
+    const key = "talk_board";
+    const talkData = reactive([{}]);
+    onMounted(() => {
+      database.ref(key).on("value", (data) => {
+        if (data) {
+          const dataList = data.val();
+          console.log(dataList);
+          // データオブジェクトを配列に変更する
+          Object.keys(dataList).forEach((val, key) => {
+            dataList[val].id = val;
+            if (!talkData[key + 1]) {
+              talkData.push(dataList[val]);
+            }
+          });
+        }
+      });
+    });
     function postBoard(post: MessageProps) {
       database.ref(key).push({
         name: post.name,
